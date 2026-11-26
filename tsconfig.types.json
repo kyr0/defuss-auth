@@ -1,0 +1,1 @@
+{"extends":"./tsconfig.json","compilerOptions":{"rootDir":".","noEmit":true},"include":["src/**/*.ts","tests/types/schema-inference.ts"]}

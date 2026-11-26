@@ -1,0 +1,163 @@
+{
+  "name": "defuss-auth",
+  "version": "0.2.0",
+  "description": "Isomorphic tenant-scoped authentication, Ed25519 JWT, service identities, API keys and sessions.",
+  "type": "module",
+  "license": "MIT",
+  "author": "defuss contributors",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "engines": {
+    "node": ">=22",
+    "bun": ">=1.4.4"
+  },
+  "packageManager": "bun@1.4.4",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./jwt": {
+      "import": {
+        "types": "./dist/jwt.d.mts",
+        "default": "./dist/jwt.mjs"
+      },
+      "require": {
+        "types": "./dist/jwt.d.cts",
+        "default": "./dist/jwt.cjs"
+      }
+    },
+    "./client": {
+      "import": {
+        "types": "./dist/client.d.mts",
+        "default": "./dist/client.mjs"
+      },
+      "require": {
+        "types": "./dist/client.d.cts",
+        "default": "./dist/client.cjs"
+      }
+    },
+    "./server": {
+      "import": {
+        "types": "./dist/server.d.mts",
+        "default": "./dist/server.mjs"
+      },
+      "require": {
+        "types": "./dist/server.d.cts",
+        "default": "./dist/server.cjs"
+      }
+    },
+    "./browser": {
+      "import": {
+        "types": "./dist/browser.d.mts",
+        "default": "./dist/browser.mjs"
+      },
+      "require": {
+        "types": "./dist/browser.d.cts",
+        "default": "./dist/browser.cjs"
+      }
+    },
+    "./providers": {
+      "import": {
+        "types": "./dist/providers.d.mts",
+        "default": "./dist/providers.mjs"
+      },
+      "require": {
+        "types": "./dist/providers.d.cts",
+        "default": "./dist/providers.cjs"
+      }
+    },
+    "./keys": {
+      "import": {
+        "types": "./dist/keys.d.mts",
+        "default": "./dist/keys.mjs"
+      },
+      "require": {
+        "types": "./dist/keys.d.cts",
+        "default": "./dist/keys.cjs"
+      }
+    },
+    "./host": {
+      "import": {
+        "types": "./dist/host.d.mts",
+        "default": "./dist/host.mjs"
+      },
+      "require": {
+        "types": "./dist/host.d.cts",
+        "default": "./dist/host.cjs"
+      }
+    },
+    "./serve": {
+      "import": {
+        "types": "./dist/serve.d.mts",
+        "default": "./dist/serve.mjs"
+      },
+      "require": {
+        "types": "./dist/serve.d.cts",
+        "default": "./dist/serve.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "ARCH.md",
+    "SECURITY.md",
+    "VALIDATION.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "docs",
+    "examples"
+  ],
+  "peerDependencies": {
+    "defuss-db": "3.2.0",
+    "defuss-storage": "0.4.1"
+  },
+  "peerDependenciesMeta": {
+    "defuss-db": {
+      "optional": true
+    },
+    "defuss-storage": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "24.10.0",
+    "defuss-db": "3.2.0",
+    "defuss-serve": "0.5.0",
+    "defuss-storage": "0.4.1",
+    "esbuild": "0.28.2",
+    "jose": "6.1.0",
+    "oxlint": "1.90.0",
+    "pkgroll": "2.29.0",
+    "playwright": "1.63.0",
+    "typescript": "5.8.3"
+  },
+  "scripts": {
+    "build": "pkgroll --clean-dist",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.types.json",
+    "lint": "bun run typecheck && oxlint --deny-warnings src",
+    "test:compile": "tsc -p tsconfig.test.json",
+    "test": "bun run test:compile && node --test tests/*.test.mjs",
+    "test:bun": "bun run test:compile && bun test tests/*.test.mjs",
+    "coverage": "bun run test:compile && node --test --experimental-test-coverage --test-coverage-include=\"build/test/*.js\" --test-coverage-exclude=\"tests/**\" --test-coverage-lines=90 --test-coverage-branches=80 --test-coverage-functions=85 tests/*.test.mjs",
+    "test:native": "node scripts/native-e2e.mjs && bun scripts/native-e2e.mjs && node scripts/native-concurrency.mjs && bun scripts/native-concurrency.mjs",
+    "test:package": "node scripts/package-e2e.mjs",
+    "test:browsers": "node scripts/browser-e2e.mjs",
+    "test:http": "node scripts/http-e2e.mjs && bun scripts/http-e2e.mjs",
+    "test:host": "node scripts/host-e2e.mjs && bun scripts/host-e2e.mjs",
+    "e2e": "bun run build && bun run test:package && bun run test:interop && bun run test:native && bun run test:http && bun run test:host && bun run test:browsers",
+    "bench": "bun run test:compile && node scripts/bench.mjs",
+    "verify": "make verify",
+    "prepublishOnly": "make verify",
+    "test:interop": "node scripts/jose-interop.mjs && bun scripts/jose-interop.mjs"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "browser-e2e.json": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "passed": true
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "passed": true
+    },
+    {
+      "browser": "webkit",
+      "version": "26.6",
+      "passed": true
+    }
+  ],
+  "host-e2e-bun.json": {
+    "passed": true,
+    "platform": "bun",
+    "runtime": "bun 1.4.4",
+    "proxy": "defuss-serve proxyPlugin",
+    "tenantAdmin": "passed",
+    "credential": "passed",
+    "isolation": "passed",
+    "tokenProxy": "passed",
+    "rateKey": "passed",
+    "keys": "passed"
+  },
+  "host-e2e-node.json": {
+    "passed": true,
+    "platform": "node",
+    "runtime": "node v26.13.1",
+    "proxy": "defuss-serve proxyPlugin",
+    "tenantAdmin": "passed",
+    "credential": "passed",
+    "isolation": "passed",
+    "tokenProxy": "passed",
+    "browsers": [
+      {
+        "browser": "chromium",
+        "version": "153.0.8010.12",
+        "mode": "cookie",
+        "passed": true
+      },
+      {
+        "browser": "firefox",
+        "version": "155.0",
+        "mode": "cookie",
+        "passed": true
+      },
+      {
+        "browser": "webkit",
+        "version": "26.6",
+        "mode": "token",
+        "passed": true
+      }
+    ],
+    "rateKey": "passed",
+    "keys": "passed"
+  },
+  "http-e2e-bun.json": {
+    "passed": true,
+    "runtime": "v26.3.0",
+    "routes": 59
+  },
+  "http-e2e-node.json": {
+    "passed": true,
+    "runtime": "v26.13.1",
+    "routes": 59
+  },
+  "native-bun.json": {
+    "passed": true,
+    "runtime": "v26.3.0",
+    "platform": "bun"
+  },
+  "native-concurrency-bun.json": {
+    "passed": true,
+    "runtime": "v26.3.0",
+    "race": true,
+    "postCommitSigkill": true
+  },
+  "native-concurrency-node.json": {
+    "passed": true,
+    "runtime": "v26.13.1",
+    "race": true,
+    "postCommitSigkill": true
+  },
+  "native-node.json": {
+    "passed": true,
+    "runtime": "v26.13.1",
+    "platform": "node"
+  },
+  "package-e2e.json": {
+    "passed": true,
+    "formats": [
+      "ESM",
+      "CJS"
+    ],
+    "runtimes": [
+      "Node",
+      "Bun"
+    ],
+    "declarationEmit": true
+  }
+}

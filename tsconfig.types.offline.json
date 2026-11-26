@@ -1,0 +1,1 @@
+{"extends":"./tsconfig.types.json","include":["src/**/*.ts","tests/types/schema-inference.ts","tests/types/upstream.d.ts"]}

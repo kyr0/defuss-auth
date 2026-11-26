@@ -1,0 +1,18 @@
+// Consume the actual publishable artifact in a clean project with no defuss peers.
+import {mkdtemp,writeFile,rm,mkdir,readdir} from 'node:fs/promises';import {tmpdir} from 'node:os';import {join,resolve} from 'node:path';import {execFileSync} from 'node:child_process';import assert from 'node:assert/strict';
+const temp=await mkdtemp(join(tmpdir(),'defuss-auth-pack-'));
+try{
+ execFileSync('npm',['pack','--ignore-scripts','--pack-destination',temp],{stdio:'inherit'});
+ const tgz=(await readdir(temp)).find(f=>f.endsWith('.tgz'));assert(tgz);
+ await writeFile(join(temp,'package.json'),JSON.stringify({private:true,type:'module'}));
+ execFileSync('bun',['add',join(temp,tgz)],{cwd:temp,stdio:'inherit'});
+ const code=`import {genEd25519Pair,importPrivate,importPublic,registeredClaims,signJwt,verifyJwt} from 'defuss-auth/jwt';import {createAuthClient} from 'defuss-auth/client'; const k=await genEd25519Pair(), priv=await importPrivate(k.privateJwk,k.kid), pub=await importPublic(k.publicJwk,k.kid);const t=await signJwt(registeredClaims('issuer','aud','user',60),priv,k.kid);if((await verifyJwt(t,pub,k.kid,{issuer:'issuer',audience:'aud'})).sub!=='user')throw Error('JWT');if(typeof createAuthClient!=='function')throw Error('client');const host=await import('defuss-auth/host');if(typeof host.createAuthHost!=='function'||typeof host.tenantAdmin!=='function')throw Error('host');`;
+ await writeFile(join(temp,'test.mjs'),code);
+ await writeFile(join(temp,'test.cjs'),`const assert=require('node:assert/strict');assert.equal(typeof require('defuss-auth/jwt').genEd25519Pair,'function');assert.equal(typeof require('defuss-auth/client').createAuthClient,'function');assert.equal(typeof require('defuss-auth').createAuth,'function');assert.equal(typeof require('defuss-auth/host').createAuthHost,'function');`);
+ for(const runtime of ['node','bun'])for(const file of ['test.mjs','test.cjs'])execFileSync(runtime,[file],{cwd:temp,stdio:'inherit'});
+ // Declaration emit of a consumer re-exporting inferred return types. VERIFIED: unexported public types fail with TS2742/TS4023.
+ await writeFile(join(temp,'types.ts'),`import {createAuth} from 'defuss-auth';import {MemoryProvider} from 'defuss-auth/providers';import {MemoryKeyStore} from 'defuss-auth/keys';export const auth=await createAuth({issuer:'https://a.example',audience:'x',provider:new MemoryProvider(),keyStore:new MemoryKeyStore(),passwordHasher:{hash:async p=>p,verify:async()=>false}});export const principal=await auth.authenticate('Bearer x');export const guard=await auth.prepareAdmin(principal,{method:'GET',resource:'users',body:{}},()=>true);export const audit=await auth.listAudit();export const deliver=auth.deliverAudit;import {createAuthHost,tenantAdmin} from 'defuss-auth/host';export const host=await createAuthHost({directory:'/unused'});export const who=await host.authenticate('app','Bearer x');export const policy=tenantAdmin('admin');export const plugin=host.plugin();`);
+ await writeFile(join(temp,'tsconfig.json'),JSON.stringify({compilerOptions:{target:'ES2022',module:'NodeNext',moduleResolution:'NodeNext',strict:true,declaration:true,emitDeclarationOnly:true,outDir:'types-out',skipLibCheck:false,types:[],lib:['ES2023','DOM']},files:['types.ts']}));
+ execFileSync(process.execPath,[resolve('node_modules/typescript/bin/tsc'),'-p',join(temp,'tsconfig.json')],{stdio:'inherit'});
+ await mkdir('output',{recursive:true});await writeFile('output/package-e2e.json',JSON.stringify({passed:true,formats:['ESM','CJS'],runtimes:['Node','Bun'],declarationEmit:true}));
+}finally{await rm(temp,{recursive:true,force:true});}

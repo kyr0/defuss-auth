@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "src/**/*.ts",
+    "tests/types/upstream.d.ts"
+  ],
+  "compilerOptions": {
+    "types": [
+      "node"
+    ],
+    "noEmit": false,
+    "outDir": "build/test"
+  }
+}

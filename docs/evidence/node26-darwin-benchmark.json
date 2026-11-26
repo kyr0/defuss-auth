@@ -1,0 +1,24 @@
+{
+  "runtime": "v26.13.1",
+  "platform": "darwin",
+  "arch": "arm64",
+  "provider": "MemoryProvider; 1 user; serial; no I/O",
+  "measurements": [
+    {
+      "label": "JWT authenticate",
+      "n": 1000,
+      "p50Ms": 0.09454099999999244,
+      "p95Ms": 0.2282910000000129,
+      "p99Ms": 0.33483300000000327,
+      "meanMs": 0.11424384399999973
+    },
+    {
+      "label": "API key authenticate",
+      "n": 1000,
+      "p50Ms": 0.019667000000026746,
+      "p95Ms": 0.042124999999998636,
+      "p99Ms": 0.0913749999999709,
+      "meanMs": 0.023140967000000442
+    }
+  ]
+}

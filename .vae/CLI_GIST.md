@@ -1,0 +1,5 @@
+- VERIFIED `eval "$(mise env -s bash)"` before make: Homebrew bun 1.4.3 shadows the pinned 1.4.4 BC `which bun` 2026-11-24.
+- VERIFIED `make setup; make verify` pass on macOS arm64, Node 26.13.1 + Bun 1.4.4 BC run 2026-11-24, VALIDATION.md.
+- VERIFIED `python3 <plugin>/scripts/vae.py gate --repo . --session <id>` runs the actual VAE gate; `make vae VAE=<path>` wraps it BC Makefile vae target.
+- HYPOTHESIS `NODE_TYPE_ROOT=<@types dir> make offline` gives the Node-only offline check (bridge declarations, not runtime evidence) BC scripts/verify-offline.sh; not rerun 2026-11-24.
+- VERIFIED Without git the session gate reports ∅ changes (vacuous); replay it in a scratch git repo whose baseline is an empty commit BC vae_repo.changed_since, run 2026-11-24.

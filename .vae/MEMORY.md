@@ -1,0 +1,11 @@
+- VERIFIED JWT and client exports stay free of native storage, JOSE and platform modules BC rule jwt.no-platform-dependencies; package-e2e runs jwt/client with no peers installed.
+- VERIFIED Read security state from one snapshot; credentials die by epochs and grant incarnation, not only expiry BC test 'disabled/re-enabled user and tenant and recreated grant never resurrect keys or sessions'.
+- VERIFIED A valid refresh replay commits session revocation before the 401; a guessed secret must not revoke BC test 'refresh is single-use, guessed digest does not revoke, replay commits family revocation'.
+- VERIFIED The client never replays a request under another session or origin BC tests 'client captures original identity before response-body cancellation permits login', 'client refuses refresh across sessions'.
+- VERIFIED Source inspection or offline bridge declarations are never runtime evidence BC native/OPFS gates found a defuss-storage name mismatch that offline tests passed (2026-11-24).
+- VERIFIED Grants are security state, not memberships; principals carry effective claims and lazily revalidated profiles BC test 'principal carries only effective claims; raw compact state excludes application data'.
+- VERIFIED Admin writes need the transaction-local actor/target guard; handlers act only on AdminOperation fields the policy saw BC tests 'admin claim revocation during authorization callback…', 'admin service creation is authorized…'.
+- VERIFIED A key-file generation counts only after durable staging + CAS publication; reconcile only with every writer stopped BC test 'master key rewrap is immutable, restartable and independently cleaned'.
+- VERIFIED Rewrap master keys separately from signing-key rotation; never delete the active generation or regenerate a corrupt published key BC auth.ts init fails closed on missing key; SECURITY.md key material.
+- VERIFIED[hosting] Browser auth via app proxy: WebKit 26.6 drops the Secure refresh cookie on http://127.0.0.1 (Chromium/Firefox keep it); token mode from a page needs allowedOrigins BC 2026-11-26 probe; scripts/host-e2e.mjs.
+- VERIFIED[coverage variance] `make coverage` totals alternate ~0.5% between identical runs (serve.js admin-service lines drop from the merged report); quote the lower, do not chase it as test flakiness BC 2026-11-26 repeat runs; v02 alone vs v02+host probe.

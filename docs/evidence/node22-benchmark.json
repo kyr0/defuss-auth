@@ -1,0 +1,24 @@
+{
+  "runtime": "v22.16.0",
+  "platform": "linux",
+  "arch": "x64",
+  "provider": "MemoryProvider; 1 user; serial; no I/O",
+  "measurements": [
+    {
+      "label": "JWT authenticate",
+      "n": 1000,
+      "p50Ms": 0.2778879999999617,
+      "p95Ms": 0.36096999999995205,
+      "p99Ms": 0.5850590000000011,
+      "meanMs": 0.29659480799999915
+    },
+    {
+      "label": "API key authenticate",
+      "n": 1000,
+      "p50Ms": 0.08106999999995423,
+      "p95Ms": 0.21470499999998083,
+      "p99Ms": 0.593770999999947,
+      "meanMs": 0.11337306400000148
+    }
+  ]
+}

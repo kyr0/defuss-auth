@@ -1,0 +1,385 @@
+./scripts/verify-offline.sh
+TAP version 13
+# Subtest: JWT strict Ed25519 and independent native crypto interop
+ok 1 - JWT strict Ed25519 and independent native crypto interop
+  ---
+  duration_ms: 15.726137
+  type: 'test'
+  ...
+# Subtest: RFC 8037 Appendix A Ed25519 public JWK thumbprint
+ok 2 - RFC 8037 Appendix A Ed25519 public JWK thumbprint
+  ---
+  duration_ms: 0.974711
+  type: 'test'
+  ...
+# Subtest: JWT rejects algorithms, duplicate members, wrong key, issuer, audience, timestamps and critical headers
+ok 3 - JWT rejects algorithms, duplicate members, wrong key, issuer, audience, timestamps and critical headers
+  ---
+  duration_ms: 12.355499
+  type: 'test'
+  ...
+# Subtest: strict JSON parser, prototype pollution, budget and canonical base64
+ok 4 - strict JSON parser, prototype pollution, budget and canonical base64
+  ---
+  duration_ms: 1.174023
+  type: 'test'
+  ...
+# Subtest: authorization header rejects ambiguous and unsupported credentials
+ok 5 - authorization header rejects ambiguous and unsupported credentials
+  ---
+  duration_ms: 17.078763
+  type: 'test'
+  ...
+# Subtest: PBKDF2 real KDF profile, correct and incorrect password
+ok 6 - PBKDF2 real KDF profile, correct and incorrect password
+  ---
+  duration_ms: 530.182698
+  type: 'test'
+  ...
+# Subtest: schema validation, complete replacement, immutable reserved fields
+ok 7 - schema validation, complete replacement, immutable reserved fields
+  ---
+  duration_ms: 11.903846
+  type: 'test'
+  ...
+# Subtest: schema full-validator adapter compiles once and refuses unsupported default keywords
+ok 8 - schema full-validator adapter compiles once and refuses unsupported default keywords
+  ---
+  duration_ms: 4.154839
+  type: 'test'
+  ...
+# Subtest: default tenant, uniqueness, many-to-many isolation, exact claims
+ok 9 - default tenant, uniqueness, many-to-many isolation, exact claims
+  ---
+  duration_ms: 16.793734
+  type: 'test'
+  ...
+# Subtest: unique user concurrent insertion and grant concurrent grants
+ok 10 - unique user concurrent insertion and grant concurrent grants
+  ---
+  duration_ms: 8.281367
+  type: 'test'
+  ...
+# Subtest: memory provider atomic rollback and stable read snapshots
+ok 11 - memory provider atomic rollback and stable read snapshots
+  ---
+  duration_ms: 0.661021
+  type: 'test'
+  ...
+# Subtest: JWT claim changes invalidate access, refresh reissues current claims
+ok 12 - JWT claim changes invalidate access, refresh reissues current claims
+  ---
+  duration_ms: 12.13774
+  type: 'test'
+  ...
+# Subtest: refresh is single-use, guessed digest does not revoke, replay commits family revocation
+ok 13 - refresh is single-use, guessed digest does not revoke, replay commits family revocation
+  ---
+  duration_ms: 7.809915
+  type: 'test'
+  ...
+# Subtest: concurrent refresh replay revokes the whole session, not merely token
+ok 14 - concurrent refresh replay revokes the whole session, not merely token
+  ---
+  duration_ms: 5.357165
+  type: 'test'
+  ...
+# Subtest: per-token revocation, session logout, all-session logout
+ok 15 - per-token revocation, session logout, all-session logout
+  ---
+  duration_ms: 9.777354
+  type: 'test'
+  ...
+# Subtest: API key scopes, plaintext excluded, rotation, revocation, current grant
+ok 16 - API key scopes, plaintext excluded, rotation, revocation, current grant
+  ---
+  duration_ms: 7.128916
+  type: 'test'
+  ...
+# Subtest: disabled/re-enabled user and tenant and recreated grant never resurrect keys or sessions
+ok 17 - disabled/re-enabled user and tenant and recreated grant never resurrect keys or sessions
+  ---
+  duration_ms: 9.896659
+  type: 'test'
+  ...
+# Subtest: tenant switching creates a new tenant-bound session, revokes prior session
+ok 18 - tenant switching creates a new tenant-bound session, revokes prior session
+  ---
+  duration_ms: 11.218981
+  type: 'test'
+  ...
+# Subtest: forged or expired principal rejected at credential mutation
+ok 19 - forged or expired principal rejected at credential mutation
+  ---
+  duration_ms: 4.367351
+  type: 'test'
+  ...
+# Subtest: password reset and email verification single-use; password reset revokes all credentials
+ok 20 - password reset and email verification single-use; password reset revokes all credentials
+  ---
+  duration_ms: 9.00495
+  type: 'test'
+  ...
+# Subtest: password change verifies current password and invalidates session
+ok 21 - password change verifies current password and invalidates session
+  ---
+  duration_ms: 7.123108
+  type: 'test'
+  ...
+# Subtest: persistent throttle, expired challenges and cleanup, session idle expiry
+ok 22 - persistent throttle, expired challenges and cleanup, session idle expiry
+  ---
+  duration_ms: 4.686079
+  type: 'test'
+  ...
+# Subtest: key rotation, retired key validation, emergency revocation and restart
+ok 23 - key rotation, retired key validation, emergency revocation and restart
+  ---
+  duration_ms: 9.92402
+  type: 'test'
+  ...
+# Subtest: encrypted JWK storage roundtrip, corruption and wrong master key fail closed
+ok 24 - encrypted JWK storage roundtrip, corruption and wrong master key fail closed
+  ---
+  duration_ms: 3.940374
+  type: 'test'
+  ...
+# Subtest: persistence exceptions fail closed and HTTP maps them to 503
+ok 25 - persistence exceptions fail closed and HTTP maps them to 503
+  ---
+  duration_ms: 7.320146
+  type: 'test'
+  ...
+# Subtest: HTTP token mode with actual Fetch request/response and client flows
+ok 26 - HTTP token mode with actual Fetch request/response and client flows
+  ---
+  duration_ms: 27.05563
+  type: 'test'
+  ...
+# Subtest: HTTP cookie mode: no refresh secret in JSON, CSRF origin, cookie flags, replay, no cache
+ok 27 - HTTP cookie mode: no refresh secret in JSON, CSRF origin, cookie flags, replay, no cache
+  ---
+  duration_ms: 7.75145
+  type: 'test'
+  ...
+# Subtest: HTTP strict JSON, body cap, admin deny by default, no credential leak
+ok 28 - HTTP strict JSON, body cap, admin deny by default, no credential leak
+  ---
+  duration_ms: 4.964548
+  type: 'test'
+  ...
+# Subtest: HTTP admin authorization explicit, target grant and body password redacted
+ok 29 - HTTP admin authorization explicit, target grant and body password redacted
+  ---
+  duration_ms: 7.407585
+  type: 'test'
+  ...
+# Subtest: client does not replay mutations or forward credentials to foreign origin
+ok 30 - client does not replay mutations or forward credentials to foreign origin
+  ---
+  duration_ms: 1.496857
+  type: 'test'
+  ...
+# Subtest: client refuses automatic retry after session identity changed
+ok 31 - client refuses automatic retry after session identity changed
+  ---
+  duration_ms: 0.545501
+  type: 'test'
+  ...
+# Subtest: client refuses refresh across sessions (shared cookie switched in another tab)
+ok 32 - client refuses refresh across sessions (shared cookie switched in another tab)
+  ---
+  duration_ms: 0.650726
+  type: 'test'
+  ...
+# Subtest: actual loopback HTTP server and Fetch client
+ok 33 - actual loopback HTTP server and Fetch client
+  ---
+  duration_ms: 35.125726
+  type: 'test'
+  ...
+# Subtest: provider scopes expire, emergency key rotation atomically invalidates old signatures
+ok 34 - provider scopes expire, emergency key rotation atomically invalidates old signatures
+  ---
+  duration_ms: 9.623879
+  type: 'test'
+  ...
+# Subtest: admin CRUD, grant APIs, pagination, session management via HTTP
+ok 35 - admin CRUD, grant APIs, pagination, session management via HTTP
+  ---
+  duration_ms: 34.947108
+  type: 'test'
+  ...
+# Subtest: route reservation protects encoded auth paths, method restrictions and CORS
+ok 36 - route reservation protects encoded auth paths, method restrictions and CORS
+  ---
+  duration_ms: 2.589639
+  type: 'test'
+  ...
+(node:2319) ExperimentalWarning: glob is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: admin claim revocation during authorization callback prevents write
+ok 37 - admin claim revocation during authorization callback prevents write
+  ---
+  duration_ms: 46.305851
+  type: 'test'
+  ...
+# Subtest: admin target change while policy awaits is rejected transactionally
+ok 38 - admin target change while policy awaits is rejected transactionally
+  ---
+  duration_ms: 8.138738
+  type: 'test'
+  ...
+# Subtest: principal carries only effective claims; raw compact state excludes application data
+ok 39 - principal carries only effective claims; raw compact state excludes application data
+  ---
+  duration_ms: 10.253122
+  type: 'test'
+  ...
+# Subtest: client captures original identity before response-body cancellation permits login
+ok 40 - client captures original identity before response-body cancellation permits login
+  ---
+  duration_ms: 3.126149
+  type: 'test'
+  ...
+# Subtest: service accounts are email-free, tenant-bound and key-scoped
+ok 41 - service accounts are email-free, tenant-bound and key-scoped
+  ---
+  duration_ms: 11.217167
+  type: 'test'
+  ...
+# Subtest: HTTP admin service key owner cannot be substituted through another URL
+ok 42 - HTTP admin service key owner cannot be substituted through another URL
+  ---
+  duration_ms: 16.08215
+  type: 'test'
+  ...
+# Subtest: verified email gate, passwordless proof and step-up session replacement
+ok 43 - verified email gate, passwordless proof and step-up session replacement
+  ---
+  duration_ms: 13.087533
+  type: 'test'
+  ...
+# Subtest: passwordless challenge cannot survive revoked and recreated tenant access
+ok 44 - passwordless challenge cannot survive revoked and recreated tenant access
+  ---
+  duration_ms: 4.980782
+  type: 'test'
+  ...
+# Subtest: registration policy, email proof, atomic single-use and no password takeover
+ok 45 - registration policy, email proof, atomic single-use and no password takeover
+  ---
+  duration_ms: 6.574382
+  type: 'test'
+  ...
+# Subtest: invitations bind tenant and claims; existing user cannot have password or profile overwritten
+ok 46 - invitations bind tenant and claims; existing user cannot have password or profile overwritten
+  ---
+  duration_ms: 9.268476
+  type: 'test'
+  ...
+# Subtest: API key rotation enforces configured TTL and immediately revokes predecessor
+ok 47 - API key rotation enforces configured TTL and immediately revokes predecessor
+  ---
+  duration_ms: 4.421731
+  type: 'test'
+  ...
+# Subtest: durable audit sequence, redaction, transaction rollback and cursor delivery
+ok 48 - durable audit sequence, redaction, transaction rollback and cursor delivery
+  ---
+  duration_ms: 5.288264
+  type: 'test'
+  ...
+# Subtest: master key rewrap is immutable, restartable and independently cleaned
+ok 49 - master key rewrap is immutable, restartable and independently cleaned
+  ---
+  duration_ms: 15.311688
+  type: 'test'
+  ...
+# Subtest: scheduled signing rotation and retirement cleanup preserve existing tokens
+ok 50 - scheduled signing rotation and retirement cleanup preserve existing tokens
+  ---
+  duration_ms: 5.287863
+  type: 'test'
+  ...
+# Subtest: schema/configuration migration is atomic and fences stale authority instances
+ok 51 - schema/configuration migration is atomic and fences stale authority instances
+  ---
+  duration_ms: 6.325116
+  type: 'test'
+  ...
+# Subtest: seeded authorization state machine: no stale grants or revoked keys regain access
+ok 52 - seeded authorization state machine: no stale grants or revoked keys regain access
+  ---
+  duration_ms: 100.072344
+  type: 'test'
+  ...
+# Subtest: seeded malformed JWT corpus always rejects at the parser boundary
+ok 53 - seeded malformed JWT corpus always rejects at the parser boundary
+  ---
+  duration_ms: 15.702372
+  type: 'test'
+  ...
+# Subtest: HTTP client email registration, passwordless login, step-up and invitations
+ok 54 - HTTP client email registration, passwordless login, step-up and invitations
+  ---
+  duration_ms: 21.094208
+  type: 'test'
+  ...
+# Subtest: password hash upgrade happens only after successful password proof
+ok 55 - password hash upgrade happens only after successful password proof
+  ---
+  duration_ms: 6.230586
+  type: 'test'
+  ...
+# Subtest: authority configuration captured at initialization and email flows require delivery
+ok 56 - authority configuration captured at initialization and email flows require delivery
+  ---
+  duration_ms: 1.799622
+  type: 'test'
+  ...
+# Subtest: global public admission bound limits unknown accounts and persists across instances
+ok 57 - global public admission bound limits unknown accounts and persists across instances
+  ---
+  duration_ms: 5.346289
+  type: 'test'
+  ...
+1..57
+# tests 57
+# suites 0
+# pass 57
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 995.346669
+# start of coverage report
+# -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# file             | line % | branch % | funcs % | uncovered lines
+# -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# build            |        |          |         | 
+#  test            |        |          |         | 
+#   admin.js       | 100.00 |    93.59 |  100.00 | 
+#   api-keys.js    | 100.00 |    78.95 |   93.75 | 
+#   audit.js       | 100.00 |    88.89 |  100.00 | 
+#   auth.js        |  98.09 |    86.27 |   95.71 | 142-143 188 325-326 387-388 454-455
+#   challenges.js  |  98.25 |    77.19 |  100.00 | 22-23 57-58
+#   client.js      |  92.69 |    83.33 |   69.32 | 31-34 91 118 137-139 160-164 182-183 189-190 255
+#   context.js     | 100.00 |   100.00 |  100.00 | 
+#   identity.js    |  93.18 |    85.29 |   98.00 | 90-100 212-215
+#   index.js       | 100.00 |   100.00 |  100.00 | 
+#   jwt.js         | 100.00 |    86.57 |  100.00 | 
+#   keys.js        |  95.08 |    64.41 |   93.75 | 17-22
+#   lifecycle.js   |  93.16 |    80.56 |  100.00 | 15-16 93-95 108-110
+#   password.js    | 100.00 |    91.30 |   91.67 | 
+#   persistence.js | 100.00 |    94.44 |   95.00 | 
+#   providers.js   |  55.49 |    84.78 |   87.50 | 12-13 95-97 101-172
+#   records.js     | 100.00 |   100.00 |  100.00 | 
+#   schema.js      |  77.82 |    71.11 |   70.59 | 9-15 87-90 102-114 117-127 137-140 185-190 192-194 196-198 216-217
+#   serve.js       |  85.19 |    85.62 |   96.43 | 101-102 183-188 249-251 263-267 271-273 275-277 279-281 283-285 287-289 333-334 363-364 375-386 391-402 404-405 407-408 417
+#   sessions.js    |  90.32 |    75.56 |   96.55 | 46-47 91-92 109-113 118-119 204-213
+#   util.js        |  99.28 |    87.50 |   97.22 | 61-62
+# -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# all files        |  91.27 |    83.26 |   89.92 | 
+# -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# end of coverage report
