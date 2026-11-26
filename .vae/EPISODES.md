@@ -29,3 +29,7 @@
 2026-11-26T11:14:49Z s=2a2a1289 FINDING scripts/host-e2e.mjs:proxy learn=verifier: e2e.hosted rule; host e2e prints the proxy it used
 2026-11-26T11:14:49Z s=2a2a1289 FINDING VALIDATION.md:coverage row learn=memory: MEMORY line coverage variance
 2026-11-26T11:22:30Z s=2a2a1289 DONE fp=29438e23604f cov=90.5% paths=.github/workflows/verify.yml,AGENTS.md,ARCH.md,CHANGELOG.md(+63)
+2026-11-26T12:08:04Z s=2a2a1289 DONE fp=ffb4b4a462e6 cov=91.5% paths=CHANGELOG.md,README.md,VALIDATION.md,bun.lock(+5)
+2026-11-26T12:08:04Z s=2a2a1289 FINDING package.json:peerDependencies.defuss-db learn=none: version evidence lives in VALIDATION.md and docs/UPSTREAM.md
+2026-11-26T12:08:04Z s=2a2a1289 FINDING src/server.ts:privateDirectory learn=test: tests/server.test.mjs covers the directory-link, ancestor-link and owner-only refusals; rule storage.canonical-directory
+2026-11-26T12:08:04Z s=2a2a1289 FINDING Makefile:coverage learn=test: tests/server.test.mjs

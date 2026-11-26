@@ -2,7 +2,7 @@
 
 Isomorphic authentication authority for Node.js, Bun and browsers. A small, instance-local API handles tenant-scoped claims, users, service accounts, password and email login, sessions, API keys, and recovery. The JWT and HTTP client exports have no runtime dependencies. Persistent defaults use defuss-db and defuss-storage. Every authenticated request verifies current persisted security state.
 
-**Release candidate:** on macOS arm64, `make verify` passes on Node.js 26 and Bun 1.4.4. That run covers 67 domain tests per runtime, the real defuss-db and defuss-storage peers, multiprocess refresh races, every HTTP route over loopback HTTP, and the hosted deployment on defuss-serve 0.5.0. It also covers browser OPFS in Chromium, Firefox and WebKit, and the packed npm artifact. An independent security review is still an open release gate. See [VALIDATION.md](VALIDATION.md) and [SECURITY.md](SECURITY.md).
+**Release candidate:** on macOS arm64, `make verify` passes on Node.js 26 and Bun 1.4.4. That run covers 69 domain tests per runtime, the real defuss-db and defuss-storage peers, multiprocess refresh races, every HTTP route over loopback HTTP, and the hosted deployment on defuss-serve 0.5.0. It also covers browser OPFS in Chromium, Firefox and WebKit, and the packed npm artifact. An independent security review is still an open release gate. See [VALIDATION.md](VALIDATION.md) and [SECURITY.md](SECURITY.md).
 
 ## Installation
 
@@ -12,7 +12,7 @@ make verify
 make release
 ```
 
-`make setup` installs the pinned Node.js 26 and Bun 1.4.4 toolchain when mise is available, resolves dependencies and installs Playwright engines. The first install creates `bun.lock`; no offline lockfile is fabricated. `make release` creates the source ZIP and npm tarball without publishing. Native use requires the upstream database and storage peers (`defuss-db@3.2.0`, `defuss-storage@0.4.1`). The core can run on Node.js 22+ with explicit providers and hashers. See [upstream contracts](docs/UPSTREAM.md).
+`make setup` installs the pinned Node.js 26 and Bun 1.4.4 toolchain when mise is available, resolves dependencies and installs Playwright engines. The first install creates `bun.lock`; no offline lockfile is fabricated. `make release` creates the source ZIP and npm tarball without publishing. Native use requires the upstream database and storage peers (`defuss-db` 3.2.0 or 3.3.0, `defuss-storage@0.4.1`). The core can run on Node.js 22+ with explicit providers and hashers. See [upstream contracts](docs/UPSTREAM.md).
 
 ## Quick start
 
@@ -116,7 +116,7 @@ Cookie mode keeps access JWTs in memory and refresh tokens in Secure, HttpOnly, 
 
 ## Persistence, maintenance and configuration
 
-The isomorphic `createAuth` accepts an `AuthProvider`, `KeyStore` and `PasswordHasher`. `MemoryProvider` and `MemoryKeyStore` are for ephemeral/test operation. `DefussDbProvider` wraps an opened database; `StorageKeyStore` wraps a byte adapter and a master key/keyring. The `/browser` entry supports an explicitly local OPFS authority in a secure dedicated worker with `insecureLocalAuthority: true`. It is not a trusted identity authority for remote services.
+The native `createAuth` keeps its database and key files in `storage.directory`, which must be an owner-only (0700) directory on a canonical path. A path through a symlink is refused, including any ancestor: on macOS, pass `realpath(tmpdir())` rather than `/var/folders/…`. The isomorphic `createAuth` accepts an `AuthProvider`, `KeyStore` and `PasswordHasher`. `MemoryProvider` and `MemoryKeyStore` are for ephemeral/test operation. `DefussDbProvider` wraps an opened database; `StorageKeyStore` wraps a byte adapter and a master key/keyring. The `/browser` entry supports an explicitly local OPFS authority in a secure dedicated worker with `insecureLocalAuthority: true`. It is not a trusted identity authority for remote services.
 
 Schedule `await auth.maintain(100)` with the defuss scheduler or your own scheduler. It rotates aged signing keys and removes expired records in bounded batches. Do not automatically delete key files: `reconcileKeyFiles({exclusive:true})` requires exclusive ownership across all processes and workers of the key namespace. Master-key rotation stages an immutable encrypted generation with `rewrapSigningKey()`; see [SECURITY.md](SECURITY.md). Durable security audit records are written in the mutation transaction by default; `deliverAudit({after,limit,deliver})` supports external at-least-once delivery. `telemetry` receives only operation names, durations, outcomes and safe codes, suitable for defuss-o11y.
 

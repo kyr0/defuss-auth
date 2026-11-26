@@ -1,78 +1,80 @@
-✔ JWT strict Ed25519 and independent native crypto interop (7.58625ms)
-✔ RFC 8037 Appendix A Ed25519 public JWK thumbprint (0.413458ms)
-✔ JWT rejects algorithms, duplicate members, wrong key, issuer, audience, timestamps and critical headers (3.17425ms)
-✔ strict JSON parser, prototype pollution, budget and canonical base64 (1.190333ms)
-✔ names, claims and emails reject control characters (3.2515ms)
-✔ authorization header rejects ambiguous and unsupported credentials (7.684708ms)
-✔ PBKDF2 real KDF profile, correct and incorrect password (172.565875ms)
-✔ schema validation, complete replacement, immutable reserved fields (2.492042ms)
-✔ schema full-validator adapter compiles once and refuses unsupported default keywords (0.944042ms)
-✔ default tenant, uniqueness, many-to-many isolation, exact claims (3.130333ms)
-✔ unique user concurrent insertion and grant concurrent grants (1.9755ms)
-✔ memory provider atomic rollback and stable read snapshots (0.184959ms)
-✔ JWT claim changes invalidate access, refresh reissues current claims (2.602708ms)
-✔ refresh is single-use, guessed digest does not revoke, replay commits family revocation (1.545583ms)
-✔ concurrent refresh replay revokes the whole session, not merely token (1.201167ms)
-✔ per-token revocation, session logout, all-session logout (2.8915ms)
-✔ API key scopes, plaintext excluded, rotation, revocation, current grant (1.994875ms)
-✔ disabled/re-enabled user and tenant and recreated grant never resurrect keys or sessions (3.350083ms)
-✔ tenant switching creates a new tenant-bound session, revokes prior session (1.486166ms)
-✔ forged or expired principal rejected at credential mutation (1.054375ms)
-✔ password reset and email verification single-use; password reset revokes all credentials (3.452791ms)
-✔ password change verifies current password and invalidates session (2.467042ms)
-✔ persistent throttle, expired challenges and cleanup, session idle expiry (2.045167ms)
-✔ key rotation, retired key validation, emergency revocation and restart (2.3545ms)
-✔ encrypted JWK storage roundtrip, corruption and wrong master key fail closed (1.567791ms)
-✔ persistence exceptions fail closed and HTTP maps them to 503 (4.043417ms)
-✔ HTTP token mode with actual Fetch request/response and client flows (7.210792ms)
-✔ HTTP cookie mode: no refresh secret in JSON, CSRF origin, cookie flags, replay, no cache (1.866459ms)
-✔ HTTP strict JSON, body cap, admin deny by default, no credential leak (1.279875ms)
-✔ HTTP admin authorization explicit, target grant and body password redacted (2.547708ms)
-✔ client does not replay mutations or forward credentials to foreign origin (0.450958ms)
-✔ client refuses automatic retry after session identity changed (0.14375ms)
-✔ client refuses refresh across sessions (shared cookie switched in another tab) (0.278709ms)
-✔ actual loopback HTTP server and Fetch client (16.560208ms)
-✔ provider scopes expire, emergency key rotation atomically invalidates old signatures (3.845583ms)
-✔ admin CRUD, grant APIs, pagination, session management via HTTP (10.17925ms)
-✔ route reservation protects encoded auth paths, method restrictions and CORS (0.765209ms)
-✔ host routes each app under its name and refuses unknown apps, paths and names (24.093792ms)
-✔ host requires the proxy credential and validates its configuration (1.401958ms)
-✔ host derives rate keys from the forwarded client of a credentialed proxy only (9.565125ms)
-✔ host.authenticate projects live JWT and API key principals bound to a tenant (5.036167ms)
-✔ host keeps the refresh cookie on the path the app proxy mounts (2.583083ms)
-✔ tenantAdmin lets an administrator act only inside the tenant that holds the claim (5.825334ms)
-✔ admin claim revocation during authorization callback prevents write (23.271333ms)
-✔ admin target change while policy awaits is rejected transactionally (2.833417ms)
-✔ principal carries only effective claims; raw compact state excludes application data (2.222959ms)
-✔ client captures original identity before response-body cancellation permits login (1.185167ms)
-✔ service accounts are email-free, tenant-bound and key-scoped (2.491ms)
-✔ HTTP admin service key owner cannot be substituted through another URL (4.74475ms)
-✔ verified email gate, passwordless proof and step-up session replacement (3.606333ms)
-✔ passwordless challenge cannot survive revoked and recreated tenant access (1.102125ms)
-✔ registration policy, email proof, atomic single-use and no password takeover (2.03ms)
-✔ invitations bind tenant and claims; existing user cannot have password or profile overwritten (3.194625ms)
-✔ API key rotation enforces configured TTL and immediately revokes predecessor (1.188667ms)
-✔ durable audit sequence, redaction, transaction rollback and cursor delivery (1.217708ms)
-✔ master key rewrap is immutable, restartable and independently cleaned (6.094541ms)
-✔ admin service creation is authorized for the tenant it is created in (2.035459ms)
-✔ HTTP mutations without payload accept the empty body stream Node adapters attach (2.012167ms)
-✔ encrypted key files use portable lowercase storage names across rewrap and reconcile (2.594959ms)
-✔ scheduled signing rotation and retirement cleanup preserve existing tokens (2.182125ms)
-✔ schema/configuration migration is atomic and fences stale authority instances (1.844417ms)
-✔ seeded authorization state machine: no stale grants or revoked keys regain access (22.846541ms)
-✔ seeded malformed JWT corpus always rejects at the parser boundary (4.424792ms)
-✔ HTTP client email registration, passwordless login, step-up and invitations (4.867791ms)
-✔ password hash upgrade happens only after successful password proof (1.938792ms)
-✔ authority configuration captured at initialization and email flows require delivery (0.578417ms)
-✔ global public admission bound limits unknown accounts and persists across instances (1.124834ms)
-ℹ tests 67
+✔ JWT strict Ed25519 and independent native crypto interop (8.162292ms)
+✔ RFC 8037 Appendix A Ed25519 public JWK thumbprint (0.430875ms)
+✔ JWT rejects algorithms, duplicate members, wrong key, issuer, audience, timestamps and critical headers (4.122708ms)
+✔ strict JSON parser, prototype pollution, budget and canonical base64 (1.430458ms)
+✔ names, claims and emails reject control characters (3.581167ms)
+✔ authorization header rejects ambiguous and unsupported credentials (8.243084ms)
+✔ PBKDF2 real KDF profile, correct and incorrect password (183.643375ms)
+✔ schema validation, complete replacement, immutable reserved fields (2.698458ms)
+✔ schema full-validator adapter compiles once and refuses unsupported default keywords (1.456792ms)
+✔ default tenant, uniqueness, many-to-many isolation, exact claims (3.578667ms)
+✔ unique user concurrent insertion and grant concurrent grants (2.09425ms)
+✔ memory provider atomic rollback and stable read snapshots (0.195417ms)
+✔ JWT claim changes invalidate access, refresh reissues current claims (2.735875ms)
+✔ refresh is single-use, guessed digest does not revoke, replay commits family revocation (1.722ms)
+✔ concurrent refresh replay revokes the whole session, not merely token (1.484833ms)
+✔ per-token revocation, session logout, all-session logout (3.437583ms)
+✔ API key scopes, plaintext excluded, rotation, revocation, current grant (2.3015ms)
+✔ disabled/re-enabled user and tenant and recreated grant never resurrect keys or sessions (3.140667ms)
+✔ tenant switching creates a new tenant-bound session, revokes prior session (1.606417ms)
+✔ forged or expired principal rejected at credential mutation (1.093167ms)
+✔ password reset and email verification single-use; password reset revokes all credentials (3.15175ms)
+✔ password change verifies current password and invalidates session (1.790958ms)
+✔ persistent throttle, expired challenges and cleanup, session idle expiry (2.094917ms)
+✔ key rotation, retired key validation, emergency revocation and restart (2.671417ms)
+✔ encrypted JWK storage roundtrip, corruption and wrong master key fail closed (1.391167ms)
+✔ persistence exceptions fail closed and HTTP maps them to 503 (4.417042ms)
+✔ HTTP token mode with actual Fetch request/response and client flows (7.973666ms)
+✔ HTTP cookie mode: no refresh secret in JSON, CSRF origin, cookie flags, replay, no cache (4.943791ms)
+✔ HTTP strict JSON, body cap, admin deny by default, no credential leak (2.831417ms)
+✔ HTTP admin authorization explicit, target grant and body password redacted (3.784666ms)
+✔ client does not replay mutations or forward credentials to foreign origin (0.733041ms)
+✔ client refuses automatic retry after session identity changed (0.231416ms)
+✔ client refuses refresh across sessions (shared cookie switched in another tab) (0.400958ms)
+✔ actual loopback HTTP server and Fetch client (21.571416ms)
+✔ provider scopes expire, emergency key rotation atomically invalidates old signatures (5.408417ms)
+✔ admin CRUD, grant APIs, pagination, session management via HTTP (11.7985ms)
+✔ route reservation protects encoded auth paths, method restrictions and CORS (0.914084ms)
+✔ host routes each app under its name and refuses unknown apps, paths and names (24.966167ms)
+✔ host requires the proxy credential and validates its configuration (1.73125ms)
+✔ host derives rate keys from the forwarded client of a credentialed proxy only (10.054625ms)
+✔ host.authenticate projects live JWT and API key principals bound to a tenant (6.602416ms)
+✔ host keeps the refresh cookie on the path the app proxy mounts (3.47975ms)
+✔ tenantAdmin lets an administrator act only inside the tenant that holds the claim (7.900875ms)
+✔ native storage refuses symlinked, non-canonical and shared directories (5.04375ms)
+✔ native storage requires a 256-bit master key unless a key store is supplied (0.264583ms)
+✔ admin claim revocation during authorization callback prevents write (24.557041ms)
+✔ admin target change while policy awaits is rejected transactionally (3.221459ms)
+✔ principal carries only effective claims; raw compact state excludes application data (2.681ms)
+✔ client captures original identity before response-body cancellation permits login (1.260041ms)
+✔ service accounts are email-free, tenant-bound and key-scoped (3.198ms)
+✔ HTTP admin service key owner cannot be substituted through another URL (5.280625ms)
+✔ verified email gate, passwordless proof and step-up session replacement (4.948292ms)
+✔ passwordless challenge cannot survive revoked and recreated tenant access (1.588209ms)
+✔ registration policy, email proof, atomic single-use and no password takeover (2.516708ms)
+✔ invitations bind tenant and claims; existing user cannot have password or profile overwritten (4.481708ms)
+✔ API key rotation enforces configured TTL and immediately revokes predecessor (1.532292ms)
+✔ durable audit sequence, redaction, transaction rollback and cursor delivery (1.822291ms)
+✔ master key rewrap is immutable, restartable and independently cleaned (6.049333ms)
+✔ admin service creation is authorized for the tenant it is created in (2.206375ms)
+✔ HTTP mutations without payload accept the empty body stream Node adapters attach (2.134125ms)
+✔ encrypted key files use portable lowercase storage names across rewrap and reconcile (2.839334ms)
+✔ scheduled signing rotation and retirement cleanup preserve existing tokens (3.358083ms)
+✔ schema/configuration migration is atomic and fences stale authority instances (4.675209ms)
+✔ seeded authorization state machine: no stale grants or revoked keys regain access (23.495708ms)
+✔ seeded malformed JWT corpus always rejects at the parser boundary (4.655167ms)
+✔ HTTP client email registration, passwordless login, step-up and invitations (6.692292ms)
+✔ password hash upgrade happens only after successful password proof (1.775459ms)
+✔ authority configuration captured at initialization and email flows require delivery (0.5985ms)
+✔ global public admission bound limits unknown accounts and persists across instances (1.24925ms)
+ℹ tests 69
 ℹ suites 0
-ℹ pass 67
+ℹ pass 69
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 339.2445
+ℹ duration_ms 377.942333
 ℹ start of coverage report
 ℹ ---------------------------------------------------------------------------------------------------------------------------------------------------------
 ℹ file                 | line % | branch % | funcs % | uncovered lines
@@ -92,17 +94,17 @@
 ℹ   jwt.js             | 100.00 |    86.57 |  100.00 | 
 ℹ   keys.js            |  95.16 |    65.57 |   94.12 | 17-22
 ℹ   lifecycle.js       |  95.73 |    82.86 |  100.00 | 15-16 93-95
-ℹ   native-password.js |  14.00 |   100.00 |    0.00 | 7-49
+ℹ   native-password.js |  40.00 |    40.00 |   12.50 | 12-21 24-27 31-38 40-47
 ℹ   password.js        | 100.00 |    91.30 |   91.67 | 
 ℹ   persistence.js     | 100.00 |    94.44 |   95.00 | 
 ℹ   providers.js       |  60.69 |    84.78 |   70.00 | 12-13 95-97 102 105-110 112-118 120-133 135-142 144-167 169-171
 ℹ   records.js         | 100.00 |   100.00 |  100.00 | 
 ℹ   schema.js          |  77.82 |    71.11 |   70.59 | 9-15 87-90 102-114 117-127 137-140 185-190 192-194 196-198 216-217
 ℹ   serve.js           |  90.02 |    89.40 |   96.43 | 108-109 256-258 270-274 278-280 282-284 286-288 290-292 294-296 372-373 400-411 413-414 416-417 426
-ℹ   server.js          |  33.85 |    28.57 |   25.00 | 10-21 29-46 48-55 59-63
+ℹ   server.js          |  70.15 |    68.18 |   50.00 | 35-37 39-46 50-57 63
 ℹ   sessions.js        |  90.32 |    77.66 |   96.55 | 46-47 91-92 109-113 118-119 204-213
 ℹ   util.js            |  97.86 |    87.65 |   94.44 | 20-23 61-62
 ℹ ---------------------------------------------------------------------------------------------------------------------------------------------------------
-ℹ all files            |  90.01 |    84.79 |   87.91 | 
+ℹ all files            |  91.06 |    84.68 |   87.48 | 
 ℹ ---------------------------------------------------------------------------------------------------------------------------------------------------------
 ℹ end of coverage report

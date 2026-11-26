@@ -14,6 +14,7 @@
 - Fix: a `DELETE` without payload behind a Node HTTP adapter, which attaches an empty body stream, no longer fails with 400; only a non-empty payload needs `application/json`.
 - Export the `AdminGuard` and `AuditRow` types so consumer declaration emit works. Make the coverage gate fail when it measures no source module; on Node 26 it had reported 100% without measuring any file.
 - Add `defuss-auth/host`: one authority per app behind one Fetch endpoint, with per-app HKDF-derived keys, a proxy credential field, rate keys from the forwarded client of a credentialed proxy, a plain `authenticate` projection for RPC, `maintain` for every app, and the `tenantAdmin` policy. See docs/HOSTING.md.
+- Widen the defuss-db peer to 3.2.0 or 3.3.0; the release gate passed with each. The native storage error for a symlinked or non-canonical directory now says to pass its realpath; tests cover both refusals and the owner-only checks.
 - Document that cookie mode needs HTTPS in WebKit and that a page needs its origin listed in token mode too.
 - Evidence: `make verify` passes on macOS arm64 with Node.js 26 and Bun 1.4.4, real defuss-db and defuss-storage, every HTTP route over loopback HTTP, and Chromium/Firefox/WebKit OPFS. See VALIDATION.md. defuss-serve and an independent security review remain open.
 

@@ -24,5 +24,6 @@ RULES = [
  {'id':'e2e.hosted','kind':'contains','path':'package.json','text':'bun run test:host','claim':'make e2e runs the hosted deployment over real defuss-serve listeners, storage and browsers'},
  {'id':'security.host-forwarded-trust','kind':'contains','path':'tests/host.test.mjs','text':'host derives rate keys from the forwarded client of a credentialed proxy only','claim':'X-Forwarded-For becomes a rate key only behind the proxy credential'},
  {'id':'security.tenant-admin','kind':'contains','path':'tests/host.test.mjs','text':'tenantAdmin lets an administrator act only inside the tenant that holds the claim','claim':'tenantAdmin stays bound to the targeted tenant'},
+ {'id':'storage.canonical-directory','kind':'contains','path':'tests/server.test.mjs','text':'native storage refuses symlinked, non-canonical and shared directories','claim':'Native storage keeps refusing symlinked ancestors and shared directories'},
  {'id':'validation.evidence','kind':'file_exists','path':'VALIDATION.md','claim':'Verification results distinguish executed and unexecuted gates'},
 ]

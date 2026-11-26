@@ -2,15 +2,15 @@
 
 ## Executed release gate (2026-11-26)
 
-Environment: macOS (Darwin 25.6.0) arm64, Node.js 26.13.1, Bun 1.4.4 (pinned through mise), TypeScript 5.8.3, oxlint 1.90.0, pkgroll 2.29.0, Playwright 1.63.0. Installed peers: defuss-db 3.2.0 and defuss-storage 0.4.1 from the registry; development dependency defuss-serve 0.5.0. `bun.lock` comes from that install.
+Environment: macOS (Darwin 25.6.0) arm64, Node.js 26.13.1, Bun 1.4.4 (pinned through mise), TypeScript 5.8.3, oxlint 1.90.0, pkgroll 2.29.0, Playwright 1.63.0. Installed peers: defuss-db 3.3.0 and defuss-storage 0.4.1 from the registry; development dependency defuss-serve 0.5.0. `bun.lock` comes from that install.
 
-VERIFIED: `make verify` (lint, test, coverage, e2e) exits 0. The defuss-vae 0.9.0 verifier proves every configured check, including the 16 project rules in `.vae/VERIFY.py`.
+VERIFIED: `make verify` (lint, test, coverage, e2e) exits 0. The defuss-vae 0.9.0 verifier proves every configured check, including the 17 project rules in `.vae/VERIFY.py`. The peer range admits defuss-db 3.2.0 and 3.3.0: the same gate passed with 3.2.0 earlier on 2026-11-26, before the development pin moved to 3.3.0.
 
 | Gate | Command | Result |
 | --- | --- | --- |
 | Strict TypeScript against the installed peer declarations, schema-inference type tests, oxlint `--deny-warnings` | `make lint` | passed |
-| Domain suite on Node and Bun, including `defuss-auth/host` | `make test` | 67/67 passed on each runtime, no skips |
-| Coverage of compiled source modules | `make coverage` | 90.01% lines, 84.79% branches, 87.91% functions ([raw report](docs/evidence/node26-darwin-coverage.txt)). VERIFIED: identical runs alternate between this report and 90.47/84.93/87.91, because `serve.js` admin service lines that `tests/host.test.mjs` executes are sometimes missing from the merged report. UNKNOWN: the cause inside Node's coverage merge; the lower figures are quoted |
+| Domain suite on Node and Bun, including `defuss-auth/host` | `make test` | 69/69 passed on each runtime, no skips |
+| Coverage of compiled source modules | `make coverage` | 91.06% lines, 84.68% branches, 87.48% functions ([raw report](docs/evidence/node26-darwin-coverage.txt)). VERIFIED: identical runs alternate between this report and 91.52/84.82/87.48, because `serve.js` admin service lines that `tests/host.test.mjs` executes are sometimes missing from the merged report. UNKNOWN: the cause inside Node's coverage merge; the lower figures are quoted |
 | Packed npm artifact: ESM and CJS on Node and Bun, consumer declaration emit | `scripts/package-e2e.mjs` | passed |
 | Independent JOSE 6.1.0 EdDSA interoperability, Node and Bun | `scripts/jose-interop.mjs` | passed |
 | Real defuss-db and defuss-storage: unique email under concurrency, restart, refresh race, service keys, rotation, master-key rewrap and reconciliation, Argon2id PHC exchange between Node and Bun | `scripts/native-e2e.mjs` | passed on Node and Bun |
@@ -50,6 +50,6 @@ These numbers do not measure persistent-database throughput. Because the hardwar
 | Actual defuss-serve plugin compatibility | VERIFIED for defuss-serve 0.5.0: `scripts/host-e2e.mjs` mounts `host.plugin()` and the app's `proxyPlugin` on two real listeners (Node and Bun). UNKNOWN: other defuss-serve versions, and the defuss-backplane integration |
 | Independent security review, fault injection inside native commits, deployment load test | UNKNOWN: an agent code review ran; no independent audit, fault injection or load test |
 | Linux and Windows runtime gates | UNKNOWN: this run covers macOS arm64 only; CI (`.github/workflows/verify.yml`) runs on Ubuntu |
-| 95% branch and security-critical coverage target | open: branches are at 84.79%, above the 80% gate floor |
+| 95% branch and security-critical coverage target | open: branches are at 84.68%, above the 80% gate floor |
 
 The offline gate (`make offline`) stays a narrow Node-only check against the bridge declarations in `tests/types/upstream.d.ts`. It is not evidence that the upstream adapters work. The source archive from `make release` is not a verified npm package; `make release` never publishes.

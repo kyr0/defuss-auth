@@ -26,8 +26,10 @@ async function privateDirectory(path: string) {
     const dir = resolve(path);
     await mkdir(dir, { recursive: true, mode: 0o700 });
     const info = await lstat(dir);
+    // Every component, not only the last: a symlinked ancestor could later point the authority at other files.
+    // VERIFIED: macOS tmpdir() is /var/folders/…, a path through the /var symlink, so callers pass its realpath.
     if (!info.isDirectory() || info.isSymbolicLink() || await realpath(dir) !== dir)
-        fail('UNAVAILABLE', 'Auth storage must be a real directory');
+        fail('UNAVAILABLE', 'Auth storage must be a real directory on a canonical path; pass its realpath');
     if (process.platform !== 'win32' && (info.mode & 0o077) !== 0)
         fail('UNAVAILABLE', 'Auth storage directory must be owner-only (0700)');
     if (typeof process.getuid === 'function' && info.uid !== process.getuid())

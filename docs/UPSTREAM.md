@@ -5,7 +5,7 @@ The upstream GitHub source was inspected on 2026-11-23 via the GitHub connector.
 | Upstream | Inspected contract | Status |
 | --- | --- | --- |
 | [defuss-jwt](https://github.com/kyr0/defuss/tree/main/packages/jwt) 1.0.2 | Ed25519, JWK thumbprints, jose and Node crypto dependency | Reimplemented independently using Web Crypto |
-| [defuss-db](https://github.com/kyr0/defuss-db) 3.2.0 | openDirectory, openOPFS, ensureCollection, createIndex, snapshot, transaction receipt.result, collection get/find/insert/put/delete | Source verified; native and OPFS runtime gates passed 2026-11-24 |
+| [defuss-db](https://github.com/kyr0/defuss-db) 3.2.0, 3.3.0 | openDirectory, openOPFS, ensureCollection, createIndex, snapshot, transaction receipt.result, collection get/find/insert/put/delete | Source verified; native and OPFS runtime gates passed with 3.2.0 (2026-11-24) and 3.3.0 (2026-11-26) |
 | [defuss-storage](https://github.com/kyr0/defuss-storage) | open with exclusive create, readExactly, write, size, flush, close, native/OPFS modules | Native and OPFS runtime gates passed 2026-11-24; names must match `[a-z0-9._-]`, at most 128 characters |
 | [defuss-vae](https://github.com/kyr0/defuss-vae) | .vae/VERIFY.py, Makefile, gates and documentation | defuss-vae 0.9.0 verifier passed 2026-11-24 |
 | [defuss-serve](https://github.com/kyr0/defuss-serve) 0.5.0 | `createServer`, route-declaring plugins, `trustedProxies`, `proxyPlugin`, `remoteAddress` | Registry 0.5.0 hosts `host.plugin()` and the app's `proxyPlugin` in `scripts/host-e2e.mjs` on Node and Bun (2026-11-26) |

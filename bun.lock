@@ -6,7 +6,7 @@
       "name": "defuss-auth",
       "devDependencies": {
         "@types/node": "24.10.0",
-        "defuss-db": "3.2.0",
+        "defuss-db": "3.3.0",
         "defuss-serve": "0.5.0",
         "defuss-storage": "0.4.1",
         "esbuild": "0.28.2",
@@ -347,7 +347,7 @@
 
     "defuss-dataview": ["defuss-dataview@0.10.0", "", {}, "sha512-JjYxG31B1qxFAkQIpkjkCgVxbvFrNZ68WLyTTtUKHOtEx6oyJYM40/Ho0eyJTbXwQTVdhBOdJQGozJuoypC7LQ=="],
 
-    "defuss-db": ["defuss-db@3.2.0", "", { "dependencies": { "defuss-brotli": "0.3.0", "defuss-dataview": "0.10.0", "defuss-dbsonl": "0.9.0", "defuss-dson": "1.5.1", "defuss-lexicalsearch": "0.4.0", "defuss-search": "0.5.0", "defuss-storage": "0.4.1", "defuss-vectorsearch": "0.4.0" } }, "sha512-ffgATseCSww0tY5NO9/2wX1GQypaWpKzSSx2V48lW+vlygPSm3lDHlGqYztGRGiPqdjFwA61vS1vAHPBpHn3PA=="],
+    "defuss-db": ["defuss-db@3.3.0", "", { "dependencies": { "defuss-brotli": "0.3.0", "defuss-dataview": "0.10.0", "defuss-dbsonl": "0.9.0", "defuss-dson": "1.5.1", "defuss-lexicalsearch": "0.4.0", "defuss-search": "0.5.0", "defuss-storage": "0.4.1", "defuss-vectorsearch": "0.4.0" } }, "sha512-7StLdZO8WqDHVomPC14Ah5oK82Hwl16eyNqE3Jca9dF0RG/nYw4oVxh2m3ErzYM0XmX4PZJbPv2v6i1WG+VLng=="],
 
     "defuss-dbsonl": ["defuss-dbsonl@0.9.0", "", { "dependencies": { "@lickle/lock": "0.0.1", "defuss-dson": "1.5.1", "defuss-storage": "0.4.1" } }, "sha512-yARo5Wtl4f2Y0EHe1jxet0lT6+eDv/AELVxugoZrIB+4O+9C4F/9b7QJZtswCTDuKmV/SIop4+R6vfz6zebhDQ=="],
 
